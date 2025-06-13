@@ -9,13 +9,19 @@ let package = Package(
     products: [
         .library(
             name: "TMFShark",
-            targets: ["TMFShark"]),
+            targets: ["TMFSharkLinker"]),
     ],
     dependencies: [],
     targets: [
         .binaryTarget(
             name: "TMFShark",
             path: "TMFShark.xcframework"
+        ),
+        .target(
+            name: "TMFSharkLinker",
+            dependencies: ["TMFShark"],
+            path: "Sources/Linker",
+            publicHeadersPath: "."
         )
     ]
 ) 
